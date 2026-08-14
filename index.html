@@ -49,7 +49,8 @@
     document.querySelectorAll('.modal').forEach(modal=>modal.onclick=event=>event.target===modal&&closeModal(modal));
     document.addEventListener('keydown',event=>{if(event.key==='Escape')document.querySelectorAll('.modal.open').forEach(closeModal)});
     document.getElementById('generalWa').href=wa('Hola Taller Express Lechería. Quiero consultar por sus servicios.');
-    document.getElementById('diagnosticForm').onsubmit=event=>{event.preventDefault();const data=new FormData(event.currentTarget);const message='Hola Taller Express Lechería. Vengo desde Instagram y quiero solicitar una evaluación.\n\nVehículo: '+data.get('vehicle')+'\nAño: '+data.get('year')+'\nMotivo: '+data.get('issue')+'\nServicio seleccionado: '+(data.get('service')||'Necesito orientación')+'\nDetalle: '+(data.get('problem')||'Sin detalle adicional');window.location.assign(wa(message))};
+    const nativeForm=document.getElementById('diagnosticForm');nativeForm.action='https://api.whatsapp.com/send';nativeForm.method='get';nativeForm.target='_self';nativeForm.insertAdjacentHTML('afterbegin','<input type="hidden" name="phone" value="584148487450"><input type="hidden" name="text" value="">');
+    nativeForm.onsubmit=event=>{const data=new FormData(event.currentTarget);const message='Hola Taller Express Lechería. Vengo desde Instagram y quiero solicitar una evaluación.\n\nVehículo: '+data.get('vehicle')+'\nAño: '+data.get('year')+'\nMotivo: '+data.get('issue')+'\nServicio seleccionado: '+(data.get('service')||'Necesito orientación')+'\nDetalle: '+(data.get('problem')||'Sin detalle adicional');event.currentTarget.elements.text.value=message};
   </script>
 </body>
 </html>
