@@ -49,7 +49,7 @@
     document.querySelectorAll('.modal').forEach(modal=>modal.onclick=event=>event.target===modal&&closeModal(modal));
     document.addEventListener('keydown',event=>{if(event.key==='Escape')document.querySelectorAll('.modal.open').forEach(closeModal)});
     document.getElementById('generalWa').href=wa('Hola Taller Express Lechería. Quiero consultar por sus servicios.');
-    document.getElementById('diagnosticForm').onsubmit=event=>{event.preventDefault();const data=new FormData(event.currentTarget);const message='Hola Taller Express Lechería. Vengo desde Instagram y quiero solicitar una evaluación.\n\nVehículo: '+data.get('vehicle')+'\nAño: '+data.get('year')+'\nMotivo: '+data.get('issue')+'\nServicio seleccionado: '+(data.get('service')||'Necesito orientación')+'\nDetalle: '+(data.get('problem')||'Sin detalle adicional');window.open(wa(message),'_blank','noopener,noreferrer')};
+    document.getElementById('diagnosticForm').onsubmit=event=>{event.preventDefault();const data=new FormData(event.currentTarget);const message='Hola Taller Express Lechería. Vengo desde Instagram y quiero solicitar una evaluación.\n\nVehículo: '+data.get('vehicle')+'\nAño: '+data.get('year')+'\nMotivo: '+data.get('issue')+'\nServicio seleccionado: '+(data.get('service')||'Necesito orientación')+'\nDetalle: '+(data.get('problem')||'Sin detalle adicional');window.location.href=wa(message)};
   </script>
 </body>
 </html>
